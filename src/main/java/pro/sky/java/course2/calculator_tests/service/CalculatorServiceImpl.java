@@ -1,7 +1,7 @@
 package pro.sky.java.course2.calculator_tests.service;
 
 import org.springframework.stereotype.Service;
-import pro.sky.java.course2.calculator_tests.exceptions.DivisionByZeroExceprion;
+import pro.sky.java.course2.calculator_tests.exceptions.DivisionByZeroException;
 
 @Service
 public class CalculatorServiceImpl implements CalculatorService {
@@ -28,7 +28,7 @@ public class CalculatorServiceImpl implements CalculatorService {
     @Override
     public int divide(int num1, int num2) {
         if (num2 == 0) {
-            throw new DivisionByZeroExceprion("Делить на 0 нельзя");
+            throw new DivisionByZeroException("Делить на 0 нельзя");
         } else
         return num1 / num2;
     }
