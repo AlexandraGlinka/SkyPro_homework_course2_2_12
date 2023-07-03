@@ -33,4 +33,28 @@ public class CalculatorServiceParamTest {
         int result = calculatorService.multiply(num1, num2);
         Assertions.assertEquals(expected, result);
     }
+
+    @ParameterizedTest
+    @CsvSource({"1000,1,999", "10,15,-5", "3,3,0"})
+    public void shouldReturnMinus(int num1, int num2, int expected) {
+        int result = calculatorService.minus(num1, num2);
+        Assertions.assertEquals(expected, result);
+    }
+
+    @ParameterizedTest
+    @MethodSource("argumentsForDivision")
+    public void shouldReturnDivide(int num1, int num2, int expected) {
+        int result = calculatorService.divide(num1, num2);
+        Assertions.assertEquals(expected, result);
+    }
+
+    private static Stream<Arguments> argumentsForDivision() {
+        return Stream.of(
+                Arguments.of(1000,2,500),
+                Arguments.of(10,-2,-5),
+                Arguments.of(3,3,1),
+                Arguments.of(-10,-2,5)
+        );
+    }
+
 }
